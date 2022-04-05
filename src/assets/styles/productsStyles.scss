@@ -1,0 +1,107 @@
+.container{
+    width: 90%;
+  margin: 0 auto;
+
+  /* category name style */
+.category-name{
+    margin-top: 80px;
+    margin-bottom: 103px;
+    font-size: 42px;
+    font-weight: 400;
+    font-family: 'Raleway' !important;
+    }
+.products-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    grid-column-gap: 28px;
+    grid-row-gap: 103px;
+/* Product Container */
+.product-container{
+    position: relative;
+   text-decoration: none;
+   h3{
+    color:#1D1F22;
+    font-weight: 300;
+    font-size: 18px;
+    }
+    .product-figure{
+        width: 386px;
+        height: 444px;
+        padding: 16px;
+    }
+    .product-image{
+        width:350px;
+        height:330px;
+        object-fit:fill;
+        margin-bottom: 21px;
+    }
+
+    /* Price style */
+    .price{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        p{
+            font-weight: 500;
+            font-size: 18px;
+            text-align: left;
+            padding-top: 5px;
+        }
+    }
+/* cart overlay */
+.card-overlay{
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+    background-color: #5ECE7B;
+    border-radius: 50%;
+    position: absolute;
+    top: 71%;
+    right: 8%;
+    display: none;
+   
+    img{
+        width: 24px;
+        height: 21.5px;
+        margin: 0 auto;
+   
+    }
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0px 4px 35px 0px #a8acb030;
+      }
+     
+      
+} 
+/* Out of stock style */
+
+.out-of-stock{
+    opacity: 0.7;
+    &:after{
+        display: block;
+        content: 'Out Of Stock';
+        font-size: 24px;
+        font-weight: 400;
+        color: #8D8F9A;
+        position:absolute;
+        top: 40%;
+        left: 30%;
+        opacity: 1;
+    }
+}
+
+
+&:hover{
+    box-shadow: 0px 4px 15px rgba(168, 172, 176, 0.19);
+    .card-overlay{
+        display: flex;
+    }
+}
+}
+}
+}

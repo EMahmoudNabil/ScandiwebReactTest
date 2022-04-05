@@ -1,0 +1,29 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family:'Raleway', sans-serif;
+  position: relative;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
+}
+
+p,li{
+  font-size: 18px;
+  font-weight: 300;
+  list-style: none;
+  color: #1D1F22;
+}
+
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
