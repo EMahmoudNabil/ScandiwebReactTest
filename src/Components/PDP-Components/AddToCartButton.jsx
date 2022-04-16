@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import addToCart from "../../redux/actions/addToCart";
+import increaseProductCount from "../../redux/actions/increaseProductCount";
 
 class AddToCartButton extends Component {
   
+  
   // adding user selected product to cart
     addToBag() {
-        const { dispatch, cart,product,inStock,optionsSelected } = this.props;
+        const { dispatch, cart,product,inStock,optionsSelected,attributes } = this.props;
        //avoid repeating products in cart
         if (!cart.some(item => item.id === product.id) && optionsSelected && inStock) {
-          dispatch(addToCart(product));
+          if(attributes.name===cart.selectedOptions){
+            dispatch(addToCart(product))  
+          }
+          else{
+            dispatch(increaseProductCount(product.id));
+          }
+          
+        }
+        else{
+          // dispatch(addToCart(product))
+          dispatch(increaseProductCount(product.id));
         }
       }
   render() {

@@ -4,7 +4,7 @@ import AddToCartButton from "./AddToCartButton";
 
 export default class AttributeDetails extends Component {
   render() {
-      const {prices, inStock, optionsSelected,product} = this.props
+      const {prices, inStock, optionsSelected,product,attributes} = this.props
     return (
       <>
         <div>
@@ -15,6 +15,7 @@ export default class AttributeDetails extends Component {
           inStock={inStock}
           optionsSelected={optionsSelected}
           product={product}
+          attributes={attributes}
         />
       </>
     );

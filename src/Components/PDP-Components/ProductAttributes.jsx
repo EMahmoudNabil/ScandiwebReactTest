@@ -134,6 +134,7 @@ class ProductAttributes extends Component {
           product={
             hasAttributes === 0 ? this.props.product : this.state.product
           }
+          attributes={product.attributes}
         />
       </div>
     );
