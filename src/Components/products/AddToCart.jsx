@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import cartIcon from "../../assets/images/Vector.png";
 import addToCart from "../../redux/actions/addToCart";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class AddToCart extends Component {
   constructor(props) {
@@ -51,16 +52,18 @@ class AddToCart extends Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { product ,id } = this.props;
     return (
-      <div
-        onClick={(e) => this.addToCarts(e, product)}
+      // <div
+      //   onClick={(e) => this.addToCarts(e, product)}
+      <Link
+        to={`/${id}/${product.id}`}
         className="card-overlay"
         style={{ display: product.inStock ? "" : "none" }}
       >   
         <img src={cartIcon} alt="add to cart icon " />
        
-      </div>
+      </Link>
     );
   }
 }

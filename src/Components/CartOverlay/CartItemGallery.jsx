@@ -43,7 +43,7 @@ export default class CartItemGallery extends Component {
     return (
       <div className="img-gallery">
         <ImgSlider imgSlider={this.imgSlider.bind(this)}/>
-        <div className="img-gallery_show">
+        <div className="img-gallery__show">
           <img ref={this.currentImg} src={imgSrc[imgCount]} alt="" />
         </div>
       </div>

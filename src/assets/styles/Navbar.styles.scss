@@ -62,25 +62,45 @@
            
         }
        
-        ul li{
+        ul {
+            li{
             list-style: none;
             text-decoration: none;
             display: inline;
             padding-right: 32px;
             font-size: 16px;
             font-weight: 600;
+            a{
+                list-style: none;
+                text-decoration: none;
+                color: #000;
+                 .active {
+                    color: #5ECE7B;
+                    border-bottom: #5ECE7B 2px solid;}  
+                
+            }
              
         }
-        
-        ul li a{
-            list-style: none;
-            text-decoration: none;
-            color: #000;
-            :hover, .active {
-                color: #5ECE7B;
-                border-bottom: #5ECE7B 2px solid;}  
+        @media only screen and (max-width: 912px) {
             
+            li{
+                
+                
+                font-weight: 600;
+                padding-right: 0px;
+                a{
+                    font-size: 10px;
+                }
+            }
+            .btnHeader{
+                padding-right: 2px;
+            }
+        
         }
+        
+    }
+        
+      
     }
 
     /* logo style */
@@ -134,9 +154,7 @@
             font-weight: 500;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 10px;
-    
-           
+            padding: 10px 20px;
             &:hover{
                 background-color: #1D1F22;
                 color: #ffffff;
@@ -171,7 +189,7 @@
     }
     .cart-overlay{
         position: absolute;
-        margin-top: 50px;
+        margin-top: 30px;
         width: 325px;
         right: -6%;
         padding: 16px;
@@ -213,7 +231,7 @@
             
              } 
              .item-options{
-                 .item-options_option{
+                 .item-options__option{
                     display: flex;
                     justify-content: flex-start;
                     .user-option,.second-option, .color-user-option, .color-second-option{
@@ -253,18 +271,25 @@
                 .img-gallery{
                     position: relative;
                     .img-slider{
-                        width: 100%;
-                        display: none;
+                        display: flex;
+                        width: 90%;
                         justify-content: space-between;
                         align-items: center;
                         padding: 0 5px;
+                        position: absolute;
+                        top: 45%;
+                        left: 1%;
+                        div{
+                            cursor: pointer;
+                            margin-left: 10px;
+                          }
                     }
-                    .img-gallery_show{
-                        width: 105px;
-                        height: 137px;
+                    .img-gallery__show{
                         img{
-                            width: 105px;
+                            width: 110px;
                             height: 137px;
+                            margin-right: 10px;
+                            object-fit: cover;
                         }
                     }
                 }
@@ -273,6 +298,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
+                    margin-right: 10px;
                 div{
                     width: 24px;
                     height: 24px;

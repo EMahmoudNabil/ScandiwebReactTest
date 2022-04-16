@@ -12,12 +12,17 @@ class CurruncyDropDown extends Component {
       selectedOption: "$ USD",
       image: downArrow
     };
-    this.showCurunciesList=this.showCurunciesList.bind(this)
+    // this.showCurunciesList=this.showCurunciesList.bind(this)
     this.toggling = this.toggling.bind(this);
   }
   
   
   toggling() {
+    if (!this.state.showModal) {
+      document.addEventListener("click", this.handleOutsideClick);
+    } else {
+      document.removeEventListener("click", this.handleOutsideClick);
+    }
     this.setState(prev => ({
       ...prev,
       showModal: !this.state.showModal,
@@ -27,22 +32,11 @@ class CurruncyDropDown extends Component {
 
 
 
-  // show and hide curruncies list on user click
-  showCurunciesList = (e) => {
-    if (!this.state.showModal) {
-      document.addEventListener("click", this.handleOutsideClick);
-    } else {
-      document.removeEventListener("click", this.handleOutsideClick);
-    }
-    this.setState((prevState) => ({
-      showModal: !prevState.showModal,
-    }));
-  };
 
   // close the currucies list when user clicks outside the list
   handleOutsideClick = (e) => {
     if (!this.node.contains(e.target)) {
-      this.showCurunciesList();
+      this.toggling(e);
     }
   };
 
@@ -51,7 +45,12 @@ class CurruncyDropDown extends Component {
     return (
      <>
      {/* Toggler Currencies List */}
-        <div onClick={this.toggling}>
+     <div
+        ref={(node) => {
+          this.node = node;
+        }}
+      >
+       <div onClick={(e) => this.toggling(e)}>
         {currncies[0] && (
           <div className="selected-curruncy">
             <p>{selectedCurrency}</p>{" "}
@@ -66,8 +65,9 @@ class CurruncyDropDown extends Component {
         <CurrunciesList
           currncies={currncies}
           showModal={this.state.showModal}
-          showCurunciesList={this.showCurunciesList}
+          toggling={this.toggling}
         />
+        </div>
      </>
     );
   }

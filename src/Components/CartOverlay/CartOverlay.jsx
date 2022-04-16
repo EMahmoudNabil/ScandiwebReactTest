@@ -11,26 +11,27 @@ class CartOverlay extends Component {
     };
   }
 
-  // Function show cart Dropdawen
-  showCartDropdawen() {
+
+  toggling() {
     if (!this.state.showBag) {
-      document.addEventListener("click", (e)=>  {
-        if (!this.node.contains(e.target)) {
-          this.showCartDropdawen();
-        }
-      });
+      document.addEventListener("click", this.handleOutsideClick);
     } else {
-      document.removeEventListener("click", (e)=>  {
-        if (!this.node.contains(e.target)) {
-          this.showCartDropdawen();
-        }
-      });
+      document.removeEventListener("click", this.handleOutsideClick);
     }
-    this.setState((prevState) => ({
-      showBag: !prevState.showBag,
+    this.setState(prev => ({
+      ...prev,
+      showBag: !this.state.showBag,
+      
     }));
   }
+
   
+  // hide cart when click outside the cart 
+  handleOutsideClick = (e) => {
+    if (!this.node.contains(e.target)) {
+      this.toggling(e);
+    }
+  };
   render() {
     const { cart } = this.props;
     const showBag = this.state.showBag;
@@ -38,9 +39,13 @@ class CartOverlay extends Component {
     // getting the cart quantity 
     cart.map(item=> totalCartQuantity+= item.count)
     return (
-      <>
+      <div
+        ref={(cartNode) => {
+          this.node = cartNode;
+        }}
+      >
       {/* cart image and total quantity */}
-        <div onClick={() => this.showCartDropdawen()}>
+        <div onClick={() => this.toggling()}>
           <div>
             <img src={emptyCartImg} alt="cartImg" />
           </div>
@@ -50,8 +55,8 @@ class CartOverlay extends Component {
         </div>
       {/* item cart  */}
         <CartItems cart={cart} showBag={showBag} />
-      
-    </>
+        </div>
+        
     );
   }
 }
